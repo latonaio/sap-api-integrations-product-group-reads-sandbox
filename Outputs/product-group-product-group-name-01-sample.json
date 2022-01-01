@@ -1,0 +1,20 @@
+{
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-product-group-reads/SAP_API_Caller/caller.go#L114",
+	"function": "sap-api-integrations-product-group-reads/SAP_API_Caller.(*SAPAPICaller).ProductGroupName",
+	"level": "INFO",
+	"message": [
+		{
+			"MaterialGroup": "ZMTN",
+			"Language": "EN",
+			"MaterialGroupName": "Mountain",
+			"MaterialGroupText": ""
+		},
+		{
+			"MaterialGroup": "0001",
+			"Language": "EN",
+			"MaterialGroupName": "Mountain Bikes",
+			"MaterialGroupText": ""
+		}
+	],
+	"time": "2022-01-01T14:53:23.88629+09:00"
+}

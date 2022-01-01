@@ -1,0 +1,68 @@
+{
+	"cursor": "/Users/latona2/bitbucket/sap-api-integrations-product-group-reads/SAP_API_Caller/caller.go#L65",
+	"function": "sap-api-integrations-product-group-reads/SAP_API_Caller.(*SAPAPICaller).ProductGroup",
+	"level": "INFO",
+	"message": [
+		{
+			"MaterialGroup": "0001",
+			"Language": "EN",
+			"MaterialGroupName": "Mountain Bikes",
+			"MaterialGroupText": ""
+		},
+		{
+			"MaterialGroup": "0001",
+			"Language": "ZH",
+			"MaterialGroupName": "",
+			"MaterialGroupText": ""
+		},
+		{
+			"MaterialGroup": "0001",
+			"Language": "DE",
+			"MaterialGroupName": "",
+			"MaterialGroupText": ""
+		},
+		{
+			"MaterialGroup": "0001",
+			"Language": "FR",
+			"MaterialGroupName": "",
+			"MaterialGroupText": ""
+		},
+		{
+			"MaterialGroup": "0001",
+			"Language": "HU",
+			"MaterialGroupName": "",
+			"MaterialGroupText": ""
+		},
+		{
+			"MaterialGroup": "0001",
+			"Language": "JA",
+			"MaterialGroupName": "",
+			"MaterialGroupText": ""
+		},
+		{
+			"MaterialGroup": "0001",
+			"Language": "NL",
+			"MaterialGroupName": "",
+			"MaterialGroupText": ""
+		},
+		{
+			"MaterialGroup": "0001",
+			"Language": "PT",
+			"MaterialGroupName": "",
+			"MaterialGroupText": ""
+		},
+		{
+			"MaterialGroup": "0001",
+			"Language": "RU",
+			"MaterialGroupName": "",
+			"MaterialGroupText": ""
+		},
+		{
+			"MaterialGroup": "0001",
+			"Language": "ES",
+			"MaterialGroupName": "",
+			"MaterialGroupText": ""
+		}
+	],
+	"time": "2022-01-01T14:44:14.027639+09:00"
+}
