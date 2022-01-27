@@ -95,9 +95,9 @@ func (c *SAPAPICaller) AsyncGetProductGroup(productGroup, language, productGroup
 }
 ```
 ## Output  
-本マイクロサービスでは、[golang-logging-library](https://github.com/latonaio/golang-logging-library) により、以下のようなデータがJSON形式で出力されます。  
+本マイクロサービスでは、[golang-logging-library-for-sap](https://github.com/latonaio/golang-logging-library-for-sap) により、以下のようなデータがJSON形式で出力されます。  
 以下の sample.json の例は、SAP 品目グループ の 品目グループデータ が取得された結果の JSON の例です。  
-以下の項目のうち、"MaterialGroup" ～ "to_Text" は、/SAP_API_Output_Formatter/type.go 内 の Type ProductGroup {} による出力結果です。"cursor" ～ "time"は、golang-logging-library による 定型フォーマットの出力結果です。  
+以下の項目のうち、"MaterialGroup" ～ "to_Text" は、/SAP_API_Output_Formatter/type.go 内 の Type ProductGroup {} による出力結果です。"cursor" ～ "time"は、golang-logging-library-for-sap による 定型フォーマットの出力結果です。  
 
 ```
 {
@@ -111,6 +111,6 @@ func (c *SAPAPICaller) AsyncGetProductGroup(productGroup, language, productGroup
 			"to_Text": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_PRODUCTGROUP_SRV/A_ProductGroup('0001')/to_Text"
 		}
 	],
-	"time": "2022-01-01T14:44:13.633838+09:00"
+	"time": "2022-01-27T17:54:58+09:00"
 }
 ```
