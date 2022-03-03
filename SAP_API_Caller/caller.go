@@ -26,14 +26,14 @@ func NewSAPAPICaller(baseUrl string, l *logger.Logger) *SAPAPICaller {
 	}
 }
 
-func (c *SAPAPICaller) AsyncGetProductGroup(productGroup, language, productGroupName string, accepter []string) {
+func (c *SAPAPICaller) AsyncGetProductGroup(materialGroup, language, productGroupName string, accepter []string) {
 	wg := &sync.WaitGroup{}
 	wg.Add(len(accepter))
 	for _, fn := range accepter {
 		switch fn {
 		case "ProductGroup":
 			func() {
-				c.ProductGroup(productGroup)
+				c.ProductGroup(materialGroup)
 				wg.Done()
 			}()
 		case "ProductGroupName":
@@ -49,8 +49,8 @@ func (c *SAPAPICaller) AsyncGetProductGroup(productGroup, language, productGroup
 	wg.Wait()
 }
 
-func (c *SAPAPICaller) ProductGroup(productGroup string) {
-	productGroupData, err := c.callProductGroupSrvAPIRequirementProductGroup("A_ProductGroup", productGroup)
+func (c *SAPAPICaller) ProductGroup(materialGroup string) {
+	productGroupData, err := c.callProductGroupSrvAPIRequirementProductGroup("A_ProductGroup", materialGroup)
 	if err != nil {
 		c.log.Error(err)
 		return
@@ -66,12 +66,12 @@ func (c *SAPAPICaller) ProductGroup(productGroup string) {
 
 }
 
-func (c *SAPAPICaller) callProductGroupSrvAPIRequirementProductGroup(api, productGroup string) ([]sap_api_output_formatter.ProductGroup, error) {
+func (c *SAPAPICaller) callProductGroupSrvAPIRequirementProductGroup(api, materialGroup string) ([]sap_api_output_formatter.ProductGroup, error) {
 	url := strings.Join([]string{c.baseURL, "API_PRODUCTGROUP_SRV", api}, "/")
 	req, _ := http.NewRequest("GET", url, nil)
 
 	c.setHeaderAPIKeyAccept(req)
-	c.getQueryWithProductGroup(req, productGroup)
+	c.getQueryWithProductGroup(req, materialGroup)
 
 	resp, err := new(http.Client).Do(req)
 	if err != nil {
@@ -105,8 +105,8 @@ func (c *SAPAPICaller) callToProductGroupName(url string) ([]sap_api_output_form
 	return data, nil
 }
 
-func (c *SAPAPICaller) ProductGroupName(language, productGroupName string) {
-	productGroupNameData, err := c.callProductGroupSrvAPIRequirementProductGroupName("A_ProductGroupText", language, productGroupName)
+func (c *SAPAPICaller) ProductGroupName(language, materialGroupName string) {
+	productGroupNameData, err := c.callProductGroupSrvAPIRequirementProductGroupName("A_ProductGroupText", language, materialGroupName)
 	if err != nil {
 		c.log.Error(err)
 		return
@@ -115,12 +115,12 @@ func (c *SAPAPICaller) ProductGroupName(language, productGroupName string) {
 
 }
 
-func (c *SAPAPICaller) callProductGroupSrvAPIRequirementProductGroupName(api, language, productGroupName string) ([]sap_api_output_formatter.ProductGroupText, error) {
+func (c *SAPAPICaller) callProductGroupSrvAPIRequirementProductGroupName(api, language, materialGroupName string) ([]sap_api_output_formatter.ProductGroupText, error) {
 	url := strings.Join([]string{c.baseURL, "API_PRODUCTGROUP_SRV", api}, "/")
 	req, _ := http.NewRequest("GET", url, nil)
 
 	c.setHeaderAPIKeyAccept(req)
-	c.getQueryWithProductGroupName(req, language, productGroupName)
+	c.getQueryWithProductGroupName(req, language, materialGroupName)
 
 	resp, err := new(http.Client).Do(req)
 	if err != nil {
@@ -141,14 +141,14 @@ func (c *SAPAPICaller) setHeaderAPIKeyAccept(req *http.Request) {
 	req.Header.Set("Accept", "application/json")
 }
 
-func (c *SAPAPICaller) getQueryWithProductGroup(req *http.Request, productGroup string) {
+func (c *SAPAPICaller) getQueryWithProductGroup(req *http.Request, materialGroup string) {
 	params := req.URL.Query()
-	params.Add("$filter", fmt.Sprintf("MaterialGroup eq '%s'", productGroup))
+	params.Add("$filter", fmt.Sprintf("MaterialGroup eq '%s'", materialGroup))
 	req.URL.RawQuery = params.Encode()
 }
 
-func (c *SAPAPICaller) getQueryWithProductGroupName(req *http.Request, language, productGroupName string) {
+func (c *SAPAPICaller) getQueryWithProductGroupName(req *http.Request, language, materialGroupName string) {
 	params := req.URL.Query()
-	params.Add("$filter", fmt.Sprintf("Language eq '%s' and substringof('%s', MaterialGroupName)", language, productGroupName))
+	params.Add("$filter", fmt.Sprintf("Language eq '%s' and substringof('%s', MaterialGroupName)", language, materialGroupName))
 	req.URL.RawQuery = params.Encode()
 }
