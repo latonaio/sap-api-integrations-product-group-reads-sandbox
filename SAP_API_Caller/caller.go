@@ -26,7 +26,7 @@ func NewSAPAPICaller(baseUrl string, l *logger.Logger) *SAPAPICaller {
 	}
 }
 
-func (c *SAPAPICaller) AsyncGetProductGroup(materialGroup, language, productGroupName string, accepter []string) {
+func (c *SAPAPICaller) AsyncGetProductGroup(materialGroup, language, materialGroupName string, accepter []string) {
 	wg := &sync.WaitGroup{}
 	wg.Add(len(accepter))
 	for _, fn := range accepter {
@@ -38,7 +38,7 @@ func (c *SAPAPICaller) AsyncGetProductGroup(materialGroup, language, productGrou
 			}()
 		case "ProductGroupName":
 			func() {
-				c.ProductGroupName(language, productGroupName)
+				c.ProductGroupName(language, materialGroupName)
 				wg.Done()
 			}()
 		default:
